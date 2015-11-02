@@ -1,0 +1,7 @@
+.idea
+*.iml
+target
+.project
+.classpath
+.settings
+example-spring-boot-rest.iml
