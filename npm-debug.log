@@ -1,0 +1,92 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'bower-check-updates' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose cache add [ 'bower-check-updates', null ]
+5 verbose cache add name=undefined spec="bower-check-updates" args=["bower-check-updates",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'bower-check-updates',
+6 verbose parsed url   path: 'bower-check-updates',
+6 verbose parsed url   href: 'bower-check-updates' }
+7 silly lockFile 42dca92c-bower-check-updates bower-check-updates
+8 verbose lock bower-check-updates /home/mneres/.npm/42dca92c-bower-check-updates.lock
+9 silly lockFile 42dca92c-bower-check-updates bower-check-updates
+10 silly lockFile 42dca92c-bower-check-updates bower-check-updates
+11 verbose addNamed [ 'bower-check-updates', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 1b5b1c37-bower-check-updates bower-check-updates@
+14 verbose lock bower-check-updates@ /home/mneres/.npm/1b5b1c37-bower-check-updates.lock
+15 silly addNameRange { name: 'bower-check-updates', range: '*', hasData: false }
+16 verbose url raw bower-check-updates
+17 verbose url resolving [ 'https://registry.npmjs.org/', './bower-check-updates' ]
+18 verbose url resolved https://registry.npmjs.org/bower-check-updates
+19 info trying registry request attempt 1 at 21:30:10
+20 http GET https://registry.npmjs.org/bower-check-updates
+21 http 200 https://registry.npmjs.org/bower-check-updates
+22 silly registry.get cb [ 200,
+22 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+22 silly registry.get     etag: '"CPG0Z58M5X1PW7NYFLJWTQ30U"',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=60',
+22 silly registry.get     'content-length': '19799',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     date: 'Wed, 04 Nov 2015 23:30:12 GMT',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '0',
+22 silly registry.get     connection: 'keep-alive',
+22 silly registry.get     'x-served-by': 'cache-sjc3129-SJC',
+22 silly registry.get     'x-cache': 'MISS',
+22 silly registry.get     'x-cache-hits': '0',
+22 silly registry.get     'x-timer': 'S1446679811.980547,VS0,VE76',
+22 silly registry.get     vary: 'Accept' } ]
+23 silly addNameRange number 2 { name: 'bower-check-updates', range: '*', hasData: true }
+24 silly addNameRange versions [ 'bower-check-updates',
+24 silly addNameRange   [ '2.0.0-alpha.13',
+24 silly addNameRange     '2.0.0-alpha.14',
+24 silly addNameRange     '2.0.0-alpha.15',
+24 silly addNameRange     '2.0.0-alpha.16',
+24 silly addNameRange     '2.0.0-alpha.17',
+24 silly addNameRange     '2.1.0',
+24 silly addNameRange     '2.2.3-1' ] ]
+25 verbose addNamed [ 'bower-check-updates', '2.2.3-1' ]
+26 verbose addNamed [ '2.2.3-1', '2.2.3-1' ]
+27 silly lockFile 05c3aba5-bower-check-updates-2-2-3-1 bower-check-updates@2.2.3-1
+28 verbose lock bower-check-updates@2.2.3-1 /home/mneres/.npm/05c3aba5-bower-check-updates-2-2-3-1.lock
+29 silly lockFile 46cf5a3f--bower-check-updates-2-2-3-1-tgz https://registry.npmjs.org/bower-check-updates/-/bower-check-updates-2.2.3-1.tgz
+30 verbose lock https://registry.npmjs.org/bower-check-updates/-/bower-check-updates-2.2.3-1.tgz /home/mneres/.npm/46cf5a3f--bower-check-updates-2-2-3-1-tgz.lock
+31 verbose addRemoteTarball [ 'https://registry.npmjs.org/bower-check-updates/-/bower-check-updates-2.2.3-1.tgz',
+31 verbose addRemoteTarball   '55eb82d6ca0e7274d015c8ca33f5ef0977b06644' ]
+32 silly lockFile 46cf5a3f--bower-check-updates-2-2-3-1-tgz https://registry.npmjs.org/bower-check-updates/-/bower-check-updates-2.2.3-1.tgz
+33 silly lockFile 46cf5a3f--bower-check-updates-2-2-3-1-tgz https://registry.npmjs.org/bower-check-updates/-/bower-check-updates-2.2.3-1.tgz
+34 silly lockFile 05c3aba5-bower-check-updates-2-2-3-1 bower-check-updates@2.2.3-1
+35 silly lockFile 05c3aba5-bower-check-updates-2-2-3-1 bower-check-updates@2.2.3-1
+36 silly lockFile 1b5b1c37-bower-check-updates bower-check-updates@
+37 silly lockFile 1b5b1c37-bower-check-updates bower-check-updates@
+38 error Error: EACCES, mkdir '/home/mneres/tmp/npm-7949-8FXhQWxr'
+38 error  { [Error: EACCES, mkdir '/home/mneres/tmp/npm-7949-8FXhQWxr']
+38 error   errno: 3,
+38 error   code: 'EACCES',
+38 error   path: '/home/mneres/tmp/npm-7949-8FXhQWxr' }
+39 error Please try running this command again as root/Administrator.
+40 error System Linux 3.13.0-65-generic
+41 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "bower-check-updates"
+42 error cwd /home/mneres/workspacer/ng-spring-boot-master
+43 error node -v v0.10.25
+44 error npm -v 1.3.10
+45 error path /home/mneres/tmp/npm-7949-8FXhQWxr
+46 error code EACCES
+47 error errno 3
+48 error stack Error: EACCES, mkdir '/home/mneres/tmp/npm-7949-8FXhQWxr'
+49 verbose exit [ 3, true ]
