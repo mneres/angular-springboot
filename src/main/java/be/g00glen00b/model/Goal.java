@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -18,16 +19,24 @@ public class Goal{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="GOAL_ID")
 	private Integer id;
-	/*@ManyToOne
-	private MyList list;*/
 	@NotNull
 	@Size(max = 100)
 	@Column(nullable = false)
 	private String name;
-	@Temporal(TemporalType.DATE)
-	private Date plannedDate;
+	@NotNull
 	@Column(nullable = false)
 	private String description;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "planned_date")
+	private Date plannedDate;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "created_at")
+	public Date createdAt;
+	
+	@PrePersist
+	void createdAt() {
+	    this.createdAt = new Date();
+	}
 	
 	public Integer getId() {
 		return id;
@@ -52,5 +61,11 @@ public class Goal{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 }
