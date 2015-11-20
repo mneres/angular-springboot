@@ -1,6 +1,6 @@
 (function(angular) {
   var GoalFactory = function($resource) {
-    return $resource('/goals/:id', {
+    return $resource('/api/goals/:id', {
       id: '@id'
     }, {
       update: {

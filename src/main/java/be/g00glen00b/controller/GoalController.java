@@ -13,7 +13,7 @@ import be.g00glen00b.model.Goal;
 import be.g00glen00b.repository.GoalRepository;
 
 @RestController
-@RequestMapping("/goals")
+@RequestMapping("/api/goals")
 public class GoalController {
   @Autowired
   private GoalRepository repo;
