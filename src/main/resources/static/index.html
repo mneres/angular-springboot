@@ -1,89 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  </head>
-  <body ng-app="myApp">
-    <div class="container" ng-controller="GoalController">
-      <div class="page-header">
-        <h1>My goals</h1>
-      </div>
-      <div class="alert alert-info" role="alert" ng-hide="goals &amp;&amp; goals.length > 0">
-        There are no goals yet.
-      </div>
-      
-      <a id="modal-add-goal" href="#modal-container-add-goal" role="button" class="btn btn-default btn-success" data-toggle="modal">
-        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add new goal
-      </a>
-   
-        <div class="form-group" ng-repeat="goal in goals">
-          <div class="checkbox col-xs-9">
-            <h2>
-              {{goal.name}}
-            </h2>
-            <p>{{goal.description}}</p>
-            <p>{{goal.plannedDate}}</p>           
-          </div>
-          <div class="col-xs-3">
-            <button class="pull-right btn btn-danger" type="button" title="Delete"
-              ng-click="deleteGoal(goal)">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-            <p>Created at: {{goal.createdAt}}<p>
-          </div>
-        </div>  
+<!doctype html>
+<html>
+<head>
+<title>Hello AngularJS</title>
+<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none !important;
+}
+</style>
+</head>
 
-       <!-- modal for add new goal -->
-       <form class="form-horizontal" role="form" ng-submit="addGoal(newGoalName, newGoalDescription, newGoalPlannedDate)">  
-       	    <div class="modal fade" id="modal-container-add-goal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">							 
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-								x
-							</button>
-							<h4 class="modal-title" id="myModalLabel">
-								Add New Goal
-							</h4>
-						</div>
-						<div class="modal-body">
-				
-					       	<div class="panel-body">
-					       	  <label>Goal Name</label><br/>
-					          <input type="text" class="form-control" ng-model="newGoalName" placeholder="Enter the goal name..." /><br />
-					          
-					          <label>Description</label><br/>
-					          <textarea class="form-control" rows="7" ng-model="newGoalDescription" placeholder="Enter the goal description..."></textarea><br />
-					          
-					          <label>Planned Date</label><br/>
-					          <input type="text" class="form-control" ng-model="newGoalPlannedDate" placeholder="Enter the goal date..." /><br />
-					      
-					        </div>
-						      
-						</div>
-						<div class="modal-footer">
-							 
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-								Close
-							</button> 
-							<button type="submit" class="btn btn-primary" title="Add">
-								Save goal
-							</button>
-						</div>       
-					</div>
-				</div>
-		    </div> 
-		</form>
+<body ng-app="myApp" ng-cloak class="ng-cloak">
+	<div ng-controller="navigation" class="container">
+		<ul class="nav nav-pills" role="tablist">
+			<li ng-class="{active:tab('home')}"><a href="#/">home</a></li>
+			<li ng-show="!authenticated"><a href="#/login">login</a></li>
+			<li><a href="#/myGoals">Goals</a></li>
+			<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+		</ul>
+	</div>
+	<div ng-view class="container"></div>
 	
-        
-
-    </div>
-    <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+	
+	<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./app/app.js"></script>
+	<script type="text/javascript" src="./app/app.js"></script>
     <script type="text/javascript" src="./app/GoalController.js"></script>
     <script type="text/javascript" src="./app/GoalService.js"></script>
-  </body>
+    <script type="text/javascript" src="./app/UserController.js"></script>
+    <script type="text/javascript" src="./app/UserService.js"></script>
+</body>
 </html>
