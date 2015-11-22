@@ -2,6 +2,9 @@ package be.g00glen00b.config;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -28,31 +31,26 @@ import org.springframework.web.util.WebUtils;
 
 @SpringBootApplication
 @RestController
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
-	
+public class SecurityConfig{
 	@RequestMapping("/user")
 	public Principal user(Principal user) {
 		return user;
 	}
 	
-	/*@Order(Ordered.HIGHEST_PRECEDENCE)
-	@Configuration
-	protected static class AuthenticationSecurity extends
-			GlobalAuthenticationConfigurerAdapter {
-
-		@Autowired
-		private SecurityBO securityBO;
-
-		@Override
-		public void init(AuthenticationManagerBuilder auth) throws Exception {
-			auth.userDetailsService(securityBO);
-		}
-	}*/
+	@RequestMapping("/resource")
+	public Map<String, Object> home() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("id", UUID.randomUUID().toString());
+		model.put("content", "Hello World");
+		return model;
+	}
 	
 	@Configuration
 	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+		
+		
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.httpBasic().and().authorizeRequests()
@@ -61,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 					.antMatchers(HttpMethod.POST, "/api/**").permitAll()
 			      	.antMatchers(HttpMethod.PUT, "/api/**").authenticated()
 			      	.antMatchers(HttpMethod.DELETE, "/api/**").authenticated()
-			      	//.and().userDetailsService(SecurityBO)
+			      	//.and().userDetailsService(securityBO).authorizeRequests()
 			      	.and().csrf()
 					.csrfTokenRepository(csrfTokenRepository()).and()
 					.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
