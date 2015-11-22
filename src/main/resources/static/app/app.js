@@ -72,7 +72,6 @@
 						}
 					})
 				};
-
 				$scope.logout = function() {
 					$http.post('logout', {}).success(function() {
 						$rootScope.authenticated = false;
