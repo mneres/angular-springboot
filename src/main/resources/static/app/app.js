@@ -15,14 +15,14 @@
 			templateUrl : 'goalControl.html',
 			controller : 'GoalController'
 		}).when('/newUser', {
+			templateUrl : 'addUser.html',
 			controller : 'UserController'
 		}).otherwise('/');
 		
 		// use the HTML5 History API
 		$locationProvider.html5Mode({
 			  enabled: true,
-			  requireBase: false,
-			  hashPrefix('!');
+			  requireBase: false
 			});
         
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
