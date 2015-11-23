@@ -3,7 +3,7 @@
   angular.module("myApp.services", []);
   angular.module('myApp', [ 'ngResource', 'myApp.controllers', 
                             'myApp.services', 'ngRoute' ])
-  .config(function($routeProvider, $httpProvider) {
+  .config(function($routeProvider, $httpProvider, $locationProvider) {
 
 		$routeProvider.when('/', {
 			templateUrl : 'home.html',
@@ -15,10 +15,16 @@
 			templateUrl : 'goalControl.html',
 			controller : 'GoalController'
 		}).when('/newUser', {
-			templateUrl : 'addUser.html',
 			controller : 'UserController'
 		}).otherwise('/');
-
+		
+		// use the HTML5 History API
+		$locationProvider.html5Mode({
+			  enabled: true,
+			  requireBase: false,
+			  hashPrefix('!');
+			});
+        
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
   }).controller(

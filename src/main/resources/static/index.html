@@ -13,9 +13,10 @@
 <body ng-app="myApp" ng-cloak class="ng-cloak">
 	<div ng-controller="navigation" class="container">
 		<ul class="nav nav-pills" role="tablist">
-			<li ng-class="{active:tab('home')}"><a href="#/">home</a></li>
-			<li ng-show="!authenticated"><a href="#/login">login</a></li>
-			<li><a href="#/myGoals">Goals</a></li>
+			<li ng-class="{active:tab('home')}"><a href="/">home</a></li>
+			<li ng-show="!authenticated"><a href="/login">Sign in</a></li>
+			<li><a href="/myGoals">Goals</a></li>
+			<li><a href="/newUser">Sign up</a></li>
 			<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
 		</ul>
 	</div>

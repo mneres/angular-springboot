@@ -1,16 +1,15 @@
 package be.g00glen00b.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import be.g00glen00b.model.User;
 import be.g00glen00b.repository.UserRepository;
 
-@Transactional
+@Service
 public class SecurityBO  implements UserDetailsService{
 	@Autowired
 	private UserRepository repo;
