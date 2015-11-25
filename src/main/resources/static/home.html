@@ -3,50 +3,7 @@
 	<p>The content is {{greeting.content}}</p>
 </div>
 <div  ng-show="!authenticated">
-	<div class="row vertical-offset-100">
-	<div class="col-md-8 col-md-offset-2">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h10 class="panel-title">Create your account</h10>
-		</div>
-		<div class="panel-body">
-			  <div class="container-fluid">
-			  <!-- Form for add new user -->
-		      	<form class="form-horizontal" role="form" ng-submit="addUser(newUserEmail, newUserPassword, newUserRePassword)">  
-				       	<div class="form-group">
-					       	  <div class="form-group">
-					       	  	<label class="col-sm-3 control-label">Email: </label>
-					          	<div class="col-sm-9">
-					          		<input type="text" class="form-control" ng-model="newUserEmail" placeholder="Text your email..." />
-					          	</div>
-					          </div>
-					          
-					          <div class="form-group">
-					          	<label class="col-sm-3 control-label">Password</label>
-					          	<div class="col-sm-9">
-					          		<input type="password" class="form-control" ng-model="newUserPassword" placeholder="Text your password..." />
-				     	 	  	</div>
-				     	 	  </div>
-				     	 	  
-				     	 	  <div class="form-group">
-				     	 	  <label class="col-sm-3 control-label" for="repeatPassword">Repeat your Password</label>
-							  <div class="col-sm-9">
-							  	<input type="repeatPassword" class="form-control" ng-model="newUserRePassword" placeholder="Retext your password..."/>
-							  </div>
-							  </div>
-							  <div class="col-sm-4">	
-							  </div>
-							  <div align="center" class="col-sm-4">								  
-								  <button type="submit" class="btn btn-primary btn-block" title="Add">
-										Create account
-								  </button>
-							  </div>
-						  </div>       
-					</form>
-				</div>
-		</div>
-		</div>
-		</div>
-	</div>
-	
+	<div class="row">
+		<p>Do your login</p>
+	</div>	
 </div>

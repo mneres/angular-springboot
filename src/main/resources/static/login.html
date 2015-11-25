@@ -1,26 +1,42 @@
-<br/>
-<div class="alert alert-danger" ng-show="error">
-	There was a problem logging in. Please try again.
-</div>
-
 <div class="row vertical-offset-100">
-	<div class="col-md-4 col-md-offset-4">
-		<div class="panel panel-default">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h10 class="panel-title">Welcome</h10>
 			</div>
 			<div class="panel-body">
-				<form role="form" ng-submit="login()">
+				<div class="alert alert-danger" ng-show="error">
+					There was a problem logging in. Please try again.
+				</div>
+				<form role="form" ng-submit="login()" name="loginForm" novalidate>
 					<div class="form-group">
-						<label for="username">Username:</label>
-						<input type="text" class="form-control" id="username" name="username" ng-model="credentials.username"/>
+						<label for="email">email:</label>
+						<input type="email" class="form-control" id="email" name="email" ng-model="credentials.username" placeholder="Text your email ..." required/>
+						<span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+							<span ng-show="loginForm.email.$error.required">Email is required.</span>
+							<span ng-show="loginForm.email.$error.email">Invalid email address.</span>
+						</span>
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" class="form-control" id="password" name="password" ng-model="credentials.password"/>
+						<input type="password" class="form-control" id="password" name="password" ng-model="credentials.password" placeholder="Text your password ..." required/>
+						<span style="color:red" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+						  <span ng-show="loginForm.password.$error.required">Password is required.</span>
+						</span>
 					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<div class="col-sm-4">	
+				  	</div>
+				  	<div align="center" class="col-sm-4">								  
+					  	<button type="submit" class="btn btn-primary btn-block" title="Add" 
+					   	ng-disabled="loginForm.email.$dirty && loginForm.email.$invalid || loginForm.email.$pristine ||
+					   				 loginForm.password.$dirty && loginForm.password.$invalid || loginForm.password.$pristine">
+							Sign in
+					  	</button>
+				  	</div>
 				</form>
+			</div>
+			<div class="panel-footer">
+				<h6>Have not you created your account? <a href="/newUser">sign up here</a></h6>
 			</div>
 		</div>
 	</div>

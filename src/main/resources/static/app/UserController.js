@@ -14,7 +14,10 @@
             $scope.newUserEmail = "";
             $scope.newUserPassword = "";
             $scope.newUserRePassword = "";
+            $scope.error = "";
+            $scope.message = "Your account was created with success";
       }else{
+    	  $scope.message = "";
     	  $scope.error = "The password does not match";
     	  console.log("Error: The password does not match");
       }

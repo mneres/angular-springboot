@@ -3,6 +3,7 @@
 <head>
 <title>Hello AngularJS</title>
 <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./css/style.css" />
 <style type="text/css">
 [ng\:cloak], [ng-cloak], .ng-cloak {
 	display: none !important;
@@ -18,13 +19,15 @@
 	      <a class="navbar-brand" href="/">List of the Life</a>
 	    </div>
 	     <div class="collapse navbar-collapse">
-	      <form class="navbar-form navbar-left" role="search">
-	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Type your search...">
-	        </div>
-	        <button type="submit" class="btn btn-default">Search</button>
-	      </form>
 	      <ul class="nav navbar-nav">
+	      	<li>
+	      	  <form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Type your search...">
+		        </div>
+		        <button type="submit" class="btn btn-default">Search</button>
+		      </form>
+	      	</li>
 	        <li ng-class="{active:tab('Home')}"><a href="/">Home</a></li>
 	        <li ng-class="{active:tab('Explore')}"><a href="/">Explore</a></li>
 			<li ng-class="{active:tab('Goals')}"><a href="/myGoals">Goals</a></li>
