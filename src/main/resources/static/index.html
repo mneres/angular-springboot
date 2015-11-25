@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
 <head>
-<title>Hello AngularJS</title>
+<title>List of the life</title>
 <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="./css/style.css" />
+<!-- <link rel="stylesheet" href="./css/background.css" /> -->
+<link rel="stylesheet" href="./css/masterPage.css" />
 <style type="text/css">
 [ng\:cloak], [ng-cloak], .ng-cloak {
 	display: none !important;
@@ -12,37 +13,54 @@
 </head>
 
 <body ng-app="myApp" ng-cloak class="ng-cloak">
-	
-	<nav class="navbar navbar-default">
-	  <div class="container" ng-controller="navigation">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/">List of the Life</a>
-	    </div>
-	     <div class="collapse navbar-collapse">
-	      <ul class="nav navbar-nav">
-	      	<li>
-	      	  <form class="navbar-form navbar-left" role="search">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Type your search...">
-		        </div>
-		        <button type="submit" class="btn btn-default">Search</button>
-		      </form>
-	      	</li>
-	        <li ng-class="{active:tab('Home')}"><a href="/">Home</a></li>
-	        <li ng-class="{active:tab('Explore')}"><a href="/">Explore</a></li>
-			<li ng-class="{active:tab('Goals')}"><a href="/myGoals">Goals</a></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li ng-show="!authenticated"><a href="/newUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	        <li ng-show="!authenticated"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	      	<li ng-show="authenticated"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-	      	
-	 	  </ul>
-	    </div>
-	  </div>
-	</nav>
+
+
+	<div id="wrapper">
 		
-	<div ng-view class="container"></div>
+		<div id="header">
+			<nav class="navbar navbar-default">
+			  <div class="container" ng-controller="navigation">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="/">List of the Life</a>
+			    </div>
+			     <div class="collapse navbar-collapse">
+			      <ul class="nav navbar-nav">
+			      	<li>
+			      	  <form class="navbar-form navbar-left" role="search">
+				        <div class="form-group">
+				          <input type="text" class="form-control" placeholder="Type your search...">
+				        </div>
+				        <button type="submit" class="btn btn-default">Search</button>
+				      </form>
+			      	</li>
+			        <li ng-class="{active:tab('Home')}"  ng-show="!authenticated"><a href="/">Home</a></li>
+			        <li ng-class="{active:tab('Home')}"  ng-show="authenticated"><a href="/">Dashboard</a></li>
+			        			        <li ng-class="{active:tab('Home')}"  ng-show="authenticated"><a href="/">My list</a></li>
+			        <li ng-class="{active:tab('Explore')}"><a href="/">Explore</a></li>
+			      </ul>
+			      <ul class="nav navbar-nav navbar-right">
+			        <li ng-show="!authenticated"><a href="/newUser"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+			        <li ng-show="!authenticated"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+			      	<li ng-show="authenticated"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+			 	  </ul>
+			    </div>
+			  </div>
+			</nav>
+		</div><!-- #header -->
+		
+		<div id="content">
+			<div ng-view class="container"></div> 
+		</div><!-- #content -->
+		
+		<div id="footer">
+			<div class="container">
+				<p>&nbsp;</p>
+				<p class="text-center" style="color: #fff;"><b>List of the life</b> - <i>The better way for you planning your life</i></p>
+			 </div>
+		</div><!-- #footer -->
+		
+	</div><!-- #wrapper -->
+	
 	
 	
 	<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>

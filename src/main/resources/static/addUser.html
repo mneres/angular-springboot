@@ -1,3 +1,7 @@
+<head>
+	<link rel="stylesheet" href="./css/background.css" />
+</head>
+
 <div class="row vertical-offset-100">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-info">
@@ -5,14 +9,17 @@
 				<h10 class="panel-title">Create your account</h10>
 			</div>
 			<div class="panel-body">
-				<h5>Join with us and trace your goals.</h5>
+				<div class="page-header">
+					<h1><p class="text-center"><small>Join with us and trace your goals.</small><p></h1>
+				</div>
+				
 				  <div class="container-fluid"> 
 				  <div class="alert alert-danger" role="alert" ng-show="error &amp;&amp; error.length > 0">
 				      {{error}}
 				  </div>
-				  <div class="alert alert-info" role="alert" ng-show="message &amp;&amp; message.length > 0">
-				      {{message}}
-				      <a href="/login">Sign in here</a>
+				  <div class="alert alert-success" role="alert" ng-show="message &amp;&amp; message.length > 0">
+				      {{message}}.
+				      <a href="/login"><u>Sign in here</u></a>
 				  </div>
 				  <br/>
 				  <!-- Form for add new user -->

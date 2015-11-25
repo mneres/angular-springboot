@@ -1,16 +1,23 @@
+<head>
+	<link rel="stylesheet" href="./css/background.css" />
+</head>
+
 <div class="row vertical-offset-100">
 	<div class="col-md-6 col-md-offset-3">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<h10 class="panel-title">Welcome</h10>
+				<h10 class="panel-title">Sign in</h10>
 			</div>
 			<div class="panel-body">
+				<div class="page-header">
+					<h1><p class="text-center"><small>Login with your account</small><p></h1>
+				</div>
 				<div class="alert alert-danger" ng-show="error">
 					There was a problem logging in. Please try again.
 				</div>
 				<form role="form" ng-submit="login()" name="loginForm" novalidate>
 					<div class="form-group">
-						<label for="email">email:</label>
+						<label for="email">Email:</label>
 						<input type="email" class="form-control" id="email" name="email" ng-model="credentials.username" placeholder="Text your email ..." required/>
 						<span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
 							<span ng-show="loginForm.email.$error.required">Email is required.</span>
@@ -30,7 +37,7 @@
 					  	<button type="submit" class="btn btn-primary btn-block" title="Add" 
 					   	ng-disabled="loginForm.email.$dirty && loginForm.email.$invalid || loginForm.email.$pristine ||
 					   				 loginForm.password.$dirty && loginForm.password.$invalid || loginForm.password.$pristine">
-							Sign in
+							Login
 					  	</button>
 				  	</div>
 				</form>

@@ -89,8 +89,8 @@
 				}
 
 			}).controller('home', function($scope, $http) {
-		$http.get('/resource/').success(function(data) {
+		/*$http.get('/resource/').success(function(data) {
 			$scope.greeting = data;
-		})
+		})*/
 	});
 }(angular));

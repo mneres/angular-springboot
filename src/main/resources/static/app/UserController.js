@@ -10,12 +10,20 @@
           new UserFactory({
               email: email,
               password: password
-            }).$save();
-            $scope.newUserEmail = "";
-            $scope.newUserPassword = "";
-            $scope.newUserRePassword = "";
-            $scope.error = "";
-            $scope.message = "Your account was created with success";
+            }).$save(function(data, headers) {    
+                console.log("Created new user with success")
+                $scope.newUserEmail = "";
+                $scope.newUserPassword = "";
+                $scope.newUserRePassword = "";
+                $scope.error = "";
+                $scope.message = "Your account was created with success";
+            },
+            function(err, headers) {    
+            	$scope.message = "";
+            	$scope.error = "It was not possible add this user, try again.";
+                console.log("It was not possible add this user, try again.")
+            });
+
       }else{
     	  $scope.message = "";
     	  $scope.error = "The password does not match";

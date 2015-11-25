@@ -1,9 +1,20 @@
-<div ng-show="authenticated">
-	<p>The ID is {{greeting.id}}</p>
-	<p>The content is {{greeting.content}}</p>
-</div>
-<div  ng-show="!authenticated">
-	<div class="row">
-		<p>Do your login</p>
-	</div>	
+<div id="page-context" class="row">
+	<div ng-show="authenticated" class="row">
+		<div class="container" id="dashboard">
+			<div class="col-md-3">
+				<div class="list-group">
+				  <a class="list-group-item active">
+				    Dashboard
+				  </a>
+				  <a href="/myGoals" class="list-group-item">Goals</a>				  
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div  ng-show="!authenticated">
+		<div class="row">
+			<p>Do your login</p>
+		</div>	
+	</div>
 </div>
