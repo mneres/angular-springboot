@@ -1,47 +1,45 @@
-<div class="container" ng-controller="GoalController">
-      <div class="page-header">
-        <h1>My goals</h1>
-      </div>
-      <div class="alert alert-info" role="alert" ng-hide="goals &amp;&amp; goals.length > 0">
-        There are no goals yet.
-      </div>
-   
-        <div class="form-group" ng-repeat="goal in goals">
-          <div class="checkbox col-xs-9">
-            <h2>
-              {{goal.name}}
-            </h2>
-            <p>{{goal.description}}</p>
-            <p>{{goal.plannedDate}}</p>           
-          </div>
-          <div class="col-xs-3">
-            <button class="pull-right btn btn-danger" type="button" title="Delete"
-              ng-click="deleteGoal(goal)">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-            <p>Created at: {{goal.createdAt}}<p>
-          </div>
-        </div>  
+    <div class="page-header">
+      <h1>My goals</h1>
+    </div>
+    <div class="alert alert-info" role="alert" ng-hide="goals &amp;&amp; goals.length > 0">
+      There are no goals yet.
+    </div>
+ 
+      <div class="form-group" ng-repeat="goal in goals">
+        <div class="checkbox col-xs-9">
+          <h2>
+            {{goal.name}}
+          </h2>
+          <p>{{goal.description}}</p>
+          <p>{{goal.plannedDate}}</p>           
+        </div>
+        <div class="col-xs-3">
+          <button class="pull-right btn btn-danger" type="button" title="Delete"
+            ng-click="deleteGoal(goal)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+          <p>Created at: {{goal.createdAt}}<p>
+        </div>
+      </div>  
+
+<br/>
+  <!-- modal for add new goal -->
+   <form class="form-horizontal" role="form" ng-submit="addGoal(newGoalName, newGoalDescription, newGoalPlannedDate)">  
+		<div class="modal-body">
 		
-		<br/>
-    <!-- modal for add new goal -->
-    <form class="form-horizontal" role="form" ng-submit="addGoal(newGoalName, newGoalDescription, newGoalPlannedDate)">  
-			<div class="modal-body">
-			
-			      	<div class="panel-body">
-			      	  <label>Goal Name</label><br/>
-			         <input type="text" class="form-control" ng-model="newGoalName" placeholder="Enter the goal name..." /><br />
-			         
-			         <label>Description</label><br/>
-			         <textarea class="form-control" rows="7" ng-model="newGoalDescription" placeholder="Enter the goal description..."></textarea><br />
-			         
-			         <label>Planned Date</label><br/>
-			         <input type="text" class="form-control" ng-model="newGoalPlannedDate" placeholder="Enter the goal date..." /><br />
-			     
-			       </div>  
-			</div>
-			<button type="submit" class="btn btn-primary" title="Add">
-			Save goal
-			</button>
-	</form>
-</div>
+		      	<div class="panel-body">
+		      	  <label>Goal Name</label><br/>
+		         <input type="text" class="form-control" ng-model="newGoalName" placeholder="Enter the goal name..." /><br />
+		         
+		         <label>Description</label><br/>
+		         <textarea class="form-control" rows="7" ng-model="newGoalDescription" placeholder="Enter the goal description..."></textarea><br />
+		         
+		         <label>Planned Date</label><br/>
+		         <input type="text" class="form-control" ng-model="newGoalPlannedDate" placeholder="Enter the goal date..." /><br />
+		     
+		       </div>  
+		</div>
+		<button type="submit" class="btn btn-primary" title="Add">
+		Save goal
+		</button>
+</form>

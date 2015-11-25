@@ -1,20 +1,28 @@
-<div class="container" ng-controller="UserController">
+<div class="container-fluid" ng-controller="UserController">
       <div class="page-header">
         <h1>Add new User</h1>
       </div>
       
       <!-- Form for add new user -->
-      <form class="form-horizontal" role="form" ng-submit="addUser(newUserEmail, newUserPassword)">  
+      <form class="form-horizontal" role="form" ng-submit="addUser(newUserEmail, newUserPassword, newUserRePassword)">  
        	<div class="form-group">
-	       	  <label>Email</label><br/>
-	          <input type="text" class="form-control" ng-model="newUserEmail" placeholder="Enter the user email..." /><br />
+	       	  <div class="form-group">
+	       	  	<label>Email</label>
+	          	<input type="text" class="form-control" ng-model="newUserEmail" placeholder="Text your email..." /><br />
+	          </div>
 	          
-	          <label>Password</label><br/>
-	          <input type="password" class="form-control" ng-model="newUserPassword" placeholder="Enter the user password..." /><br />
-	      
-			<button type="submit" class="btn btn-primary" title="Add">
-				Save user
-			</button>
+	          <div class="form-group">
+	          	<label>Password</label>
+	          	<input type="password" class="form-control" ng-model="newUserPassword" placeholder="Text your password..." /><br />
+     	 	  </div>
+     	 	  
+     	 	  <div class="form-group">
+				<label for="repeatPassword">Repeat your Password</label>
+			   	<input type="repeatPassword" class="form-control" ng-model="newUserRePassword" placeholder="Retext your password..."/>
+			  </div>
+			  <button type="submit" class="btn btn-primary" title="Add">
+					Save user
+			  </button>
 		</div>       
 	</form>
 </div>

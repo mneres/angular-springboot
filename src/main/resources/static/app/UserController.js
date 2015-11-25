@@ -4,13 +4,21 @@
       $scope.users = response ? response : [];
     });
     
-    $scope.addUser = function(email, password) {
-      new UserFactory({
-        email: email,
-        password: password
-      }).$save();
-      $scope.newUserEmail = "";
-      $scope.newUserPassword = "";
+    $scope.addUser = function(email, password, repassword) {
+    	
+      if(password == repassword){
+          new UserFactory({
+              email: email,
+              password: password
+            }).$save();
+            $scope.newUserEmail = "";
+            $scope.newUserPassword = "";
+            $scope.newUserRePassword = "";
+      }else{
+    	  $scope.error = "The password does not match";
+    	  console.log("Error: The password does not match");
+      }
+
     };
     
     $scope.updateUser = function(user) {

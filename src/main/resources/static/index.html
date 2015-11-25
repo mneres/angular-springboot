@@ -11,15 +11,34 @@
 </head>
 
 <body ng-app="myApp" ng-cloak class="ng-cloak">
-	<div ng-controller="navigation" class="container">
-		<ul class="nav nav-pills" role="tablist">
-			<li ng-class="{active:tab('home')}"><a href="/">home</a></li>
-			<li ng-show="!authenticated"><a href="/login">Sign in</a></li>
-			<li><a href="/myGoals">Goals</a></li>
-			<li><a href="/newUser">Sign up</a></li>
-			<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
-		</ul>
-	</div>
+	
+	<nav class="navbar navbar-default">
+	  <div class="container" ng-controller="navigation">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">List of the Life</a>
+	    </div>
+	     <div class="collapse navbar-collapse">
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Type your search...">
+	        </div>
+	        <button type="submit" class="btn btn-default">Search</button>
+	      </form>
+	      <ul class="nav navbar-nav">
+	        <li ng-class="{active:tab('Home')}"><a href="/">Home</a></li>
+	        <li ng-class="{active:tab('Explore')}"><a href="/">Explore</a></li>
+			<li ng-class="{active:tab('Goals')}"><a href="/myGoals">Goals</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li ng-show="!authenticated"><a href="/newUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	        <li ng-show="!authenticated"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      	<li ng-show="authenticated"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+	      	
+	 	  </ul>
+	    </div>
+	  </div>
+	</nav>
+		
 	<div ng-view class="container"></div>
 	
 	
