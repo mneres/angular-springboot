@@ -4,17 +4,13 @@
       $scope.goals = response ? response : [];
     });
     
-    $scope.addGoal = function(name, description, plannedDate) {
+    $scope.addGoal = function(name, category) {
       new GoalFactory({
         name: name,
-        description: description,
-        plannedDate: plannedDate
-      }).$save(function(goal) {
-        $scope.goals.push(goal);
-      });
+        category: category
+      }).$save();
       $scope.newGoalName = "";
-      $scope.newGoalDescription = "";
-      $scope.newGoalPlannedDate = "";
+      $scope.newGoalCategory = "";
     };
     
     $scope.updateGoal = function(goal) {

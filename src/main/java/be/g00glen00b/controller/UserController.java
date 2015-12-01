@@ -10,34 +10,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import be.g00glen00b.model.User;
-import be.g00glen00b.repository.UserRepository;
+import be.g00glen00b.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-  @Autowired
-  private UserRepository repo;
+
+	@Autowired
+	private UserService userService;
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public List<User> findItems() {
+		return userService.listAll();
+	}
   
-  @RequestMapping(method = RequestMethod.GET)
-  public List<User> findItems() {
-    return repo.findAll();
-  }
+	@RequestMapping(method = RequestMethod.POST)
+	public User addUser(@RequestBody User user) {
+		user.setId(null);
+		return userService.addUser(user);
+	}
   
-  @RequestMapping(method = RequestMethod.POST)
-  public User addUser(@RequestBody User user) {
-    user.setId(null);
-    return repo.saveAndFlush(user);
-  }
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public User updateUser(@RequestBody User updatedUser, @PathVariable Integer id) {
+		updatedUser.setId(id);
+		return userService.updateUser(updatedUser);
+	}
   
-  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-  public User updateUser(@RequestBody User updatedUser, @PathVariable Integer id) {
-	updatedUser.setId(id);
-    return repo.saveAndFlush(updatedUser);
-  }
-  
-  @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-  public void deleteUser(@PathVariable Integer id) {
-    repo.delete(id);
-  }
-  
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void deleteUser(@PathVariable Integer id) {
+		userService.deleteUser(id);
+	}
 }

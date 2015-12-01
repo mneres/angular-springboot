@@ -28,7 +28,7 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
-import be.g00glen00b.service.SecurityBO;
+import be.g00glen00b.service.SecurityService;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -44,11 +44,11 @@ public class SecurityConfig{
 			GlobalAuthenticationConfigurerAdapter {
 
 		@Autowired
-		private SecurityBO users;
+		private SecurityService securityService;
 
 		@Override
 		public void init(AuthenticationManagerBuilder auth) throws Exception {
-			auth.userDetailsService(users);
+			auth.userDetailsService(securityService);
 		}
 	}
 	
@@ -58,12 +58,10 @@ public class SecurityConfig{
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.httpBasic().and().authorizeRequests()
-					
-			      	//.antMatchers(HttpMethod.POST, "/api/**").authenticated()
-					.antMatchers(HttpMethod.POST, "/api/**").permitAll()
+					.antMatchers(HttpMethod.POST, "/api/users/**").permitAll()
+			      	.antMatchers(HttpMethod.POST, "/api/**").authenticated()
 			      	.antMatchers(HttpMethod.PUT, "/api/**").authenticated()
 			      	.antMatchers(HttpMethod.DELETE, "/api/**").authenticated()
-			      	//.and().userDetailsService(securityBO).authorizeRequests()
 			      	.and().csrf()
 					.csrfTokenRepository(csrfTokenRepository()).and()
 					.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);

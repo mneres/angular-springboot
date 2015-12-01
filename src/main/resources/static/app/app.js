@@ -11,8 +11,11 @@
 		}).when('/login', {
 			templateUrl : 'login.html',
 			controller : 'navigation'
-		}).when('/myGoals', {
+		}).when('/addGoal', {
 			templateUrl : 'goalControl.html',
+			controller : 'GoalController'
+		}).when('/myGoals', {
+			templateUrl : 'listGoals.html',
 			controller : 'GoalController'
 		}).when('/newUser', {
 			templateUrl : 'addUser.html',

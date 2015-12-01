@@ -1,0 +1,26 @@
+<div id="page-context" class="row">
+	<div class="container" id="dashboard">
+	    <div class="page-header">
+	      <h1>My goals</h1>
+	    </div>
+	    <div class="alert alert-info" role="alert" ng-hide="goals &amp;&amp; goals.length > 0">
+	      There are no goals yet.
+	    </div>
+	 
+	      <div class="form-group" ng-repeat="goal in goals">
+	        <div class="checkbox col-xs-9">
+	          <h2>
+	            {{goal.name}}
+	          </h2>
+	          <p>{{goal.category}}</p>          
+	        </div>
+	        <div class="col-xs-3">
+	          <button class="pull-right btn btn-danger" type="button" title="Delete"
+	            ng-click="deleteGoal(goal)">
+	            <span class="glyphicon glyphicon-trash"></span>
+	          </button>
+	          <p>Created at: {{goal.createdAt}}<p>
+	        </div>
+	      </div>  
+	</div>
+</div>
