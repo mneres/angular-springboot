@@ -19,6 +19,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	public UserController(UserService userService){
+		this.userService = userService;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<User> findItems() {
 		return userService.listAll();

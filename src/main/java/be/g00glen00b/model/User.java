@@ -18,7 +18,6 @@ public class User implements UserDetails{
 	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = -8724330779186468471L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="User_ID")

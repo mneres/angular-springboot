@@ -20,6 +20,11 @@ import be.g00glen00b.service.GoalService;
 public class GoalController {
 	@Autowired
 	private GoalService goalService;
+	
+	@Autowired
+	public GoalController(GoalService goalService){
+		this.goalService = goalService;
+	}
   
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Goal> findItems() {
