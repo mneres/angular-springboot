@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import be.g00glen00b.model.Goal;
+import be.g00glen00b.model.Requirement;
 import be.g00glen00b.model.User;
 import be.g00glen00b.repository.GoalRepository;
+import be.g00glen00b.repository.RequirementRepository;
 import be.g00glen00b.repository.UserRepository;
 
 @Service
@@ -18,20 +20,26 @@ public class GoalServiceImpl implements GoalService{
 	
 	private UserRepository userRepository;
 	private GoalRepository goalRepository;
-
+	private RequirementRepository requirementRepository;
+	
 	@Autowired
 	public GoalServiceImpl(UserRepository userRepository,
-		GoalRepository goalRepository) {
+		GoalRepository goalRepository, RequirementRepository requirementRepository) {
 	    this.userRepository = userRepository;
 	    this.goalRepository = goalRepository;
+	    this.requirementRepository = requirementRepository;
 	}
 
 	@Override
 	@Transactional
-	public Goal addGoal(Goal goal, String userEmail) {
-		User user = userRepository.findOneByEmail(userEmail);
-		goal.setUser(user);
+	public Goal addGoal(Goal goal, List<Requirement> requirements) {
 		try{
+			User user = userRepository.findOneByEmail(goal.getUser().getEmail());
+			goal.setUser(user);
+			
+			for(Requirement req : requirements){
+				goal.addRequeriment(requirementRepository.save(req));
+			}
 			goalRepository.save(goal);
 		}catch(Exception e){
 			return new Goal();
@@ -68,5 +76,16 @@ public class GoalServiceImpl implements GoalService{
 		}catch(Exception e){
 		}
 		return list;
+	}
+
+	@Override
+	public Goal findOneById(Integer id) {
+		Goal goal = new Goal();
+		if(id != null){
+			try{
+				goal = goalRepository.findOneById(id);
+			}catch(Exception e){}
+		}
+		return goal;
 	}
 }

@@ -1,5 +1,7 @@
 package be.g00glen00b.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
@@ -34,10 +37,10 @@ public class Goal{
 	@Temporal(TemporalType.DATE)
 	@Column(name = "created_at")
 	public Date createdAt;
-	/*@OneToMany(orphanRemoval=true)
-    @JoinColumn(name="CUST_ID") // join column is in table for Order
-    public Set<Order> getOrders() {return orders;}*/
-	
+	@OneToMany(orphanRemoval=true)
+    @JoinColumn(name="REQUERIMENTS_ID")
+    public Collection<Requirement> requirements  = new ArrayList<Requirement>();
+
 	@PrePersist
 	void createdAt() {
 	    this.createdAt = new Date();
@@ -69,5 +72,21 @@ public class Goal{
 	}
 	public void setUser(User user){
 		this.user = user;
+	}
+	public Collection<Requirement> getRequeriments() {
+		return requirements;
+	}
+	public boolean addRequeriment(Requirement requirement){
+		try{
+			if(!requirement.getValue().isEmpty() && !requirement.getCategory().isEmpty()){
+				this.requirements.add(requirement);
+			}else{
+				return false;
+			}
+			
+		}catch(Exception e){
+			return false;
+		}
+		return true;
 	}
 }

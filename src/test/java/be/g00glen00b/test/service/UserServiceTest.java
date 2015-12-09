@@ -84,16 +84,4 @@ public class UserServiceTest {
 		//test if the password has been updated
 		assertTrue(!beforeDelete.equals(afterDelete));
 	}
-	
-	/*@Test
-	@Rollback(true)
-	public void listUser(){
-		Integer count = 0;
-		Integer quantityBefore = userService.listAll().size();
-		Collection<User> lst = userService.listAll(); 
-		for(@SuppressWarnings("unused") User u : lst){
-			count++;
-		}
-		assertTrue(count == quantityBefore);
-	}*/
 }

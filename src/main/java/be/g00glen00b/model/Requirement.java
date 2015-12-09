@@ -8,10 +8,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Requeriment {
+public class Requirement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="REQUERIMENTS_ID")
+	@Column(name="REQUIREMENT_ID")
 	private Integer id;
 	@NotNull
 	@Column(nullable = false)
@@ -19,7 +19,7 @@ public class Requeriment {
 	@NotNull
 	@Column(nullable = false)
 	private String value;
-	
+
 	public Integer getId() {
 		return id;
 	}

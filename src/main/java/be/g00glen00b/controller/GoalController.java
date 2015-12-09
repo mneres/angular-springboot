@@ -1,5 +1,6 @@
 package be.g00glen00b.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import be.g00glen00b.model.Goal;
+import be.g00glen00b.model.Requirement;
 import be.g00glen00b.model.User;
 import be.g00glen00b.service.GoalService;
 
@@ -20,6 +22,7 @@ import be.g00glen00b.service.GoalService;
 public class GoalController {
 	@Autowired
 	private GoalService goalService;
+	private List<Requirement> requirements = new ArrayList<Requirement>();
 	
 	@Autowired
 	public GoalController(GoalService goalService){
@@ -30,12 +33,25 @@ public class GoalController {
 	public List<Goal> findItems() {
 		return goalService.listAll();
 	}
+	
+	@RequestMapping("/addRequirement")
+	public Requirement addRequirement(@RequestBody Requirement requirement){
+		requirements.add(requirement);
+		return requirement;
+	}
   
 	@RequestMapping(method = RequestMethod.POST)
 	public Goal addGoal(@RequestBody Goal goal) {
+		//get user authenticated on the system
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = (User)authentication.getPrincipal();
-		goalService.addGoal(goal, user.getEmail());
+		
+		//set user in goal
+		goal.setUser(user);
+		
+		//add new goal
+		goalService.addGoal(goal, requirements);
+		
 		return goal;
 	}
   
