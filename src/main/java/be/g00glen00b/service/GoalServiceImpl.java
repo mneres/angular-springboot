@@ -38,7 +38,7 @@ public class GoalServiceImpl implements GoalService{
 			goal.setUser(user);
 			
 			for(Requirement req : requirements){
-				goal.addRequeriment(requirementRepository.save(req));
+				goal.addRequirement(requirementRepository.save(req));
 			}
 			goalRepository.save(goal);
 		}catch(Exception e){

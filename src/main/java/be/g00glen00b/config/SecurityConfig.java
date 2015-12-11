@@ -62,6 +62,7 @@ public class SecurityConfig{
 			      	.antMatchers(HttpMethod.POST, "/api/**").authenticated()
 			      	.antMatchers(HttpMethod.PUT, "/api/**").authenticated()
 			      	.antMatchers(HttpMethod.DELETE, "/api/**").authenticated()
+			      	//.and().csrf().disable()
 			      	.and().csrf()
 					.csrfTokenRepository(csrfTokenRepository()).and()
 					.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);

@@ -38,7 +38,7 @@ public class Goal{
 	@Column(name = "created_at")
 	public Date createdAt;
 	@OneToMany(orphanRemoval=true)
-    @JoinColumn(name="REQUERIMENTS_ID")
+    @JoinColumn(name="REQUIRIMENTS_ID")
     public Collection<Requirement> requirements  = new ArrayList<Requirement>();
 
 	@PrePersist
@@ -73,10 +73,10 @@ public class Goal{
 	public void setUser(User user){
 		this.user = user;
 	}
-	public Collection<Requirement> getRequeriments() {
+	public Collection<Requirement> getRequirements() {
 		return requirements;
 	}
-	public boolean addRequeriment(Requirement requirement){
+	public boolean addRequirement(Requirement requirement){
 		try{
 			if(!requirement.getValue().isEmpty() && !requirement.getCategory().isEmpty()){
 				this.requirements.add(requirement);

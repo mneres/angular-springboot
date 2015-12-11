@@ -19,7 +19,7 @@ import be.g00glen00b.service.GoalService;
 
 @RestController
 @RequestMapping("/api/goals")
-public class GoalController {
+public class GoalController extends BaseController{
 	@Autowired
 	private GoalService goalService;
 	private List<Requirement> requirements = new ArrayList<Requirement>();
