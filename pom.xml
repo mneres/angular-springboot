@@ -49,6 +49,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
+		
+		<!-- Spring security dependency for test -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-test</artifactId>
+		    <version>4.0.0.M1</version>
+		    <scope>test</scope>
+		</dependency>
         
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -56,4 +64,11 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+	
+	<repositories>
+	    <repository>
+	        <id>spring-snasphot</id>
+	        <url>https://repo.spring.io/libs-snapshot</url>
+	    </repository>
+	</repositories>
 </project>

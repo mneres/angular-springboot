@@ -15,4 +15,6 @@ public interface GoalService {
 	List<Goal> listAll();
 	
 	Goal findOneById(Integer id);
+	
+	Requirement addRequirementInGoal(Requirement requirement, Goal goal);
 }

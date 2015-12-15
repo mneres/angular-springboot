@@ -35,12 +35,12 @@ public class GoalServiceImpl implements GoalService{
 	public Goal addGoal(Goal goal, List<Requirement> requirements) {
 		try{
 			User user = userRepository.findOneByEmail(goal.getUser().getEmail());
-			goal.setUser(user);
-			
-			for(Requirement req : requirements){
-				goal.addRequirement(requirementRepository.save(req));
+			if (user != null){
+				for(Requirement req : requirements){
+					goal.addRequirement(requirementRepository.save(req));
+				}
+				goalRepository.save(goal);
 			}
-			goalRepository.save(goal);
 		}catch(Exception e){
 			return new Goal();
 		}
@@ -79,6 +79,7 @@ public class GoalServiceImpl implements GoalService{
 	}
 
 	@Override
+	@Transactional
 	public Goal findOneById(Integer id) {
 		Goal goal = new Goal();
 		if(id != null){
@@ -87,5 +88,22 @@ public class GoalServiceImpl implements GoalService{
 			}catch(Exception e){}
 		}
 		return goal;
+	}
+	
+	@Override
+	@Transactional
+	public Requirement addRequirementInGoal(Requirement requirement, Goal goal){
+		if(goal.getId() != null){
+			requirementRepository.save(requirement);
+			if(requirement.getId() != null){
+				goal.addRequirement(requirement);
+				goalRepository.save(goal);
+			}else{
+				requirement = new Requirement();
+			}
+		}else{
+			requirement = new Requirement();
+		}
+		return requirement;
 	}
 }

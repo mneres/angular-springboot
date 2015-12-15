@@ -12,7 +12,7 @@
 			templateUrl : 'login.html',
 			controller : 'navigation'
 		}).when('/addGoal', {
-			templateUrl : 'goalControl.html',
+			templateUrl : 'addGoal.html',
 			controller : 'GoalController'
 		}).when('/myGoals', {
 			templateUrl : 'listGoals.html',

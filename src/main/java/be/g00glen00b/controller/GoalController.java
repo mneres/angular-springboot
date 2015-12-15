@@ -22,6 +22,7 @@ import be.g00glen00b.service.GoalService;
 public class GoalController extends BaseController{
 	@Autowired
 	private GoalService goalService;
+	
 	private List<Requirement> requirements = new ArrayList<Requirement>();
 	
 	@Autowired
@@ -34,24 +35,16 @@ public class GoalController extends BaseController{
 		return goalService.listAll();
 	}
 	
-	@RequestMapping("/addRequirement")
-	public Requirement addRequirement(@RequestBody Requirement requirement){
-		requirements.add(requirement);
-		return requirement;
-	}
-  
 	@RequestMapping(method = RequestMethod.POST)
 	public Goal addGoal(@RequestBody Goal goal) {
-		//get user authenticated on the system
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = (User)authentication.getPrincipal();
-		
-		//set user in goal
-		goal.setUser(user);
-		
+		if(goal.getUser() == null || goal.getUser().getId() == null){
+			//get user authenticated on the system and set in the goal
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			User user = (User)authentication.getPrincipal();
+			goal.setUser(user);
+		}
 		//add new goal
 		goalService.addGoal(goal, requirements);
-		
 		return goal;
 	}
   
@@ -64,5 +57,17 @@ public class GoalController extends BaseController{
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void deleteGoal(@PathVariable Integer id) {
 		goalService.deleteGoal(id);
+	}
+	
+	@RequestMapping(value = "/addRequirement", method = RequestMethod.POST)
+	public Requirement addRequirement(@RequestBody Requirement requirement){
+		this.requirements.add(requirement);
+		return requirement;	
+	}
+	
+	@RequestMapping(value = "/{idGoal}/addRequirement", method = RequestMethod.POST)
+	public Requirement addRequirementForGoal(@PathVariable Integer idGoal, @RequestBody Requirement requirement){
+		Goal goal = goalService.findOneById(idGoal);
+		return goalService.addRequirementInGoal(requirement, goal);	
 	}
 }
