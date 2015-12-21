@@ -10,7 +10,25 @@
 			         <label>Category</label><br/>
 			         <input type="text" class="form-control" ng-model="newGoalCategory" placeholder="Enter the goal category..." /><br />
 			       </div>  
-	
+			       
+			       <div class="form-group" ng-repeat="req in requirements">
+					 <div class="checkbox col-xs-9">
+					   <h2>
+					     {{req.category}}
+					   </h2>
+					   <p>{{req.value}}</p>          
+					 </div>
+				   </div>
+			       
+			       <div class="panel-body">
+			      	  <label>Category</label><br/>
+			         <input type="text" class="form-control" ng-model="newReqCategory" placeholder="Enter the requirement category..." /><br />
+			         <label>Value</label><br/>
+			         <input type="text" class="form-control" ng-model="newReqValue" placeholder="Enter the requirement value..." /><br />
+			       	 <button class="btn btn-primary" title="Add" ng-click="addRequirement(newReqCategory, newReqValue)">
+					 	Add requirement
+					 </button>
+			       </div>  
 			</div>
 			<div align="center" class="col-sm-12" align="right">
 				<button type="submit" class="btn btn-primary" title="Add">

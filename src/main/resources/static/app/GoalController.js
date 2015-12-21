@@ -1,6 +1,7 @@
-(function(angular) {
-  var GoalController = function($scope, GoalFactory) {
+(function(angular) {	
+  var GoalController = function($scope, GoalFactory, RequirementFactory) {
 	GoalFactory.query(function(response) {
+	  $scope.requirements = [];
       $scope.goals = response ? response : [];
     });
     
@@ -22,8 +23,23 @@
         $scope.goals.splice($scope.goals.indexOf(goal), 1);
       });
     };
+    
+    $scope.addRequirement = function(category, value) {
+        new RequirementFactory({
+          category: category,
+          value: value
+        }).$save();
+        var req = {
+        		 "category": category,
+                 "value": value
+        };
+        $scope.requirements.push(req);
+        $scope.newReqCategory = "";
+        $scope.newReqValue = "";
+      };
+    
   };
   
-  GoalController.$inject = ['$scope', 'GoalFactory'];
+  GoalController.$inject = ['$scope', 'GoalFactory', 'RequirementFactory'];
   angular.module("myApp.controllers").controller("GoalController", GoalController);
 }(angular));
