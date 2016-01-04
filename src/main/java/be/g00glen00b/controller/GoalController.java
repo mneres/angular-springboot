@@ -22,12 +22,12 @@ import be.g00glen00b.service.GoalService;
 public class GoalController extends BaseController{
 	@Autowired
 	private GoalService goalService;
-	
-	private List<Requirement> requirements = new ArrayList<Requirement>();
+	private List<Requirement> requirements;
 	
 	@Autowired
 	public GoalController(GoalService goalService){
 		this.goalService = goalService;
+		requirements = new ArrayList<Requirement>();
 	}
   
 	@RequestMapping(method = RequestMethod.GET)
@@ -63,6 +63,12 @@ public class GoalController extends BaseController{
 	public Requirement addRequirement(@RequestBody Requirement requirement){
 		this.requirements.add(requirement);
 		return requirement;	
+	}
+	
+	@RequestMapping(value = "/addRequirements", method = RequestMethod.POST)
+	public List<Requirement> addRequirements(@RequestBody List<Requirement> reqs){
+		this.requirements = reqs;
+		return this.requirements;
 	}
 	
 	@RequestMapping(value = "/{idGoal}/addRequirement", method = RequestMethod.POST)
