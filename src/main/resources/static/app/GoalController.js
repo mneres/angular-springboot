@@ -2,19 +2,24 @@
 	var GoalController = function($scope, $http, GoalFactory) {
 		GoalFactory.query(function(response) {
 			$scope.requirements = [];
+			$scope.actions = [{'action':'Testing actions', 'planningDate': '02/02/2016'}];
 			$scope.goals = response ? response : [];
 		});
     
 	    $scope.addGoal = function(name, category) {
 	    	$http.post('/api/goals/addRequirements', $scope.requirements)
 	    		.success(function(data){
-	    			$scope.requirements = [];
-	    			new GoalFactory({
-	    		    	name: name,
-	    		    	category: category
-	    		    }).$save();
-	    		    $scope.newGoalName = "";
-	    		    $scope.newGoalCategory = "";
+	    			$http.post('/api/goals/addActions', $scope.actions)
+	    			.success(function(data){
+	    				$scope.requirements = [];
+	    				$scope.actions = [];
+		    			new GoalFactory({
+		    		    	name: name,
+		    		    	category: category
+		    		    }).$save();
+		    		    $scope.newGoalName = "";
+		    		    $scope.newGoalCategory = "";
+	    			});
 	    	});
 	    };
 	    

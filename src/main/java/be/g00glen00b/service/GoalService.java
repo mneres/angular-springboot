@@ -2,11 +2,12 @@ package be.g00glen00b.service;
 
 import java.util.List;
 
+import be.g00glen00b.model.Action;
 import be.g00glen00b.model.Goal;
 import be.g00glen00b.model.Requirement;
 
 public interface GoalService {
-	Goal addGoal(Goal goal, List<Requirement> requirements) ;
+	Goal addGoal(Goal goal, List<Requirement> requirements, List<Action> actions);
 	
 	Goal updateGoal(Goal goal);
 	

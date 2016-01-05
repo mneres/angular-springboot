@@ -8,9 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import be.g00glen00b.model.Action;
 import be.g00glen00b.model.Goal;
 import be.g00glen00b.model.Requirement;
 import be.g00glen00b.model.User;
+import be.g00glen00b.repository.ActionRepository;
 import be.g00glen00b.repository.GoalRepository;
 import be.g00glen00b.repository.RequirementRepository;
 import be.g00glen00b.repository.UserRepository;
@@ -21,23 +23,28 @@ public class GoalServiceImpl implements GoalService{
 	private UserRepository userRepository;
 	private GoalRepository goalRepository;
 	private RequirementRepository requirementRepository;
+	private ActionRepository actionRepository;
 	
 	@Autowired
-	public GoalServiceImpl(UserRepository userRepository,
-		GoalRepository goalRepository, RequirementRepository requirementRepository) {
+	public GoalServiceImpl(UserRepository userRepository,GoalRepository goalRepository, 
+			RequirementRepository requirementRepository, ActionRepository actionRepository) {
 	    this.userRepository = userRepository;
 	    this.goalRepository = goalRepository;
 	    this.requirementRepository = requirementRepository;
+	    this.actionRepository = actionRepository;
 	}
 
 	@Override
 	@Transactional
-	public Goal addGoal(Goal goal, List<Requirement> requirements) {
+	public Goal addGoal(Goal goal, List<Requirement> requirements, List<Action> actions) {
 		try{
 			User user = userRepository.findOneByEmail(goal.getUser().getEmail());
 			if (user != null){
 				for(Requirement req : requirements){
 					goal.addRequirement(requirementRepository.save(req));
+				}
+				for(Action act : actions){
+					goal.addAction(actionRepository.save(act));
 				}
 				goalRepository.save(goal);
 			}

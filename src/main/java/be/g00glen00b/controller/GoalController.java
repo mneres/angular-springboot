@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import be.g00glen00b.model.Action;
 import be.g00glen00b.model.Goal;
 import be.g00glen00b.model.Requirement;
 import be.g00glen00b.model.User;
@@ -23,11 +24,13 @@ public class GoalController extends BaseController{
 	@Autowired
 	private GoalService goalService;
 	private List<Requirement> requirements;
+	private List<Action> actions;
 	
 	@Autowired
 	public GoalController(GoalService goalService){
 		this.goalService = goalService;
 		requirements = new ArrayList<Requirement>();
+		actions = new ArrayList<Action>();
 	}
   
 	@RequestMapping(method = RequestMethod.GET)
@@ -44,7 +47,7 @@ public class GoalController extends BaseController{
 			goal.setUser(user);
 		}
 		//add new goal
-		goalService.addGoal(goal, requirements);
+		goalService.addGoal(goal, requirements, actions);
 		return goal;
 	}
   
@@ -59,16 +62,26 @@ public class GoalController extends BaseController{
 		goalService.deleteGoal(id);
 	}
 	
-	@RequestMapping(value = "/addRequirement", method = RequestMethod.POST)
-	public Requirement addRequirement(@RequestBody Requirement requirement){
-		this.requirements.add(requirement);
-		return requirement;	
-	}
-	
 	@RequestMapping(value = "/addRequirements", method = RequestMethod.POST)
 	public List<Requirement> addRequirements(@RequestBody List<Requirement> reqs){
 		this.requirements = reqs;
 		return this.requirements;
+	}
+	
+	@RequestMapping(value = "/addActions", method = RequestMethod.POST)
+	public List<Action> addActions(@RequestBody List<Action> acts){
+		this.actions = acts;
+		return this.actions;
+	}
+	
+	
+	/*
+	 * This code needs to be revised
+	 */
+	@RequestMapping(value = "/addRequirement", method = RequestMethod.POST)
+	public Requirement addRequirement(@RequestBody Requirement requirement){
+		this.requirements.add(requirement);
+		return requirement;	
 	}
 	
 	@RequestMapping(value = "/{idGoal}/addRequirement", method = RequestMethod.POST)
@@ -76,4 +89,7 @@ public class GoalController extends BaseController{
 		Goal goal = goalService.findOneById(idGoal);
 		return goalService.addRequirementInGoal(requirement, goal);	
 	}
+	/*
+	 * Until here
+	 */
 }

@@ -36,11 +36,14 @@ public class Goal{
 	private String category;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "created_at")
-	public Date createdAt;
+	private Date createdAt;
 	@OneToMany(orphanRemoval=true)
     @JoinColumn(name="REQUIRIMENTS_ID")
-    public Collection<Requirement> requirements  = new ArrayList<Requirement>();
-
+	private Collection<Requirement> requirements  = new ArrayList<Requirement>();
+	@OneToMany(orphanRemoval=true)
+    @JoinColumn(name="ACTIONS_ID")
+	private Collection<Action> actions = new ArrayList<Action>();
+	
 	@PrePersist
 	void createdAt() {
 	    this.createdAt = new Date();
@@ -74,12 +77,29 @@ public class Goal{
 		this.user = user;
 	}
 	public Collection<Requirement> getRequirements() {
-		return requirements;
+		return this.requirements;
 	}
 	public boolean addRequirement(Requirement requirement){
 		try{
 			if(!requirement.getValue().isEmpty() && !requirement.getCategory().isEmpty()){
 				this.requirements.add(requirement);
+			}else{
+				return false;
+			}
+			
+		}catch(Exception e){
+			return false;
+		}
+		return true;
+	}
+	
+	public Collection<Action> getActions() {
+		return this.actions;
+	}
+	public boolean addAction(Action action){
+		try{
+			if(!action.getAction().isEmpty()){
+				this.actions.add(action);
 			}else{
 				return false;
 			}
