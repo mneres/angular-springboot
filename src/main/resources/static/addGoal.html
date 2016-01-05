@@ -1,36 +1,42 @@
 <div id="page-context" class="row">
 	<div class="container" id="dashboard">
-	  <!-- modal for add new goal -->
 	   <form class="form-horizontal" role="form">  
-			<div class="modal-body">
-			      	<div class="panel-body">
-			      	  <label>Goal Name</label><br/>
-			         <input type="text" class="form-control" ng-model="newGoalName" placeholder="Enter the goal name..." /><br />
-			         
-			         <label>Category</label><br/>
-			         <input type="text" class="form-control" ng-model="newGoalCategory" placeholder="Enter the goal category..." /><br />
-			       </div>  
-			       
-			       <div class="form-group" ng-repeat="req in requirements">
-					 <div class="checkbox col-xs-9">
-					   <h2>
-					     {{req.category}}
-					   </h2>
-					   <p>{{req.value}}</p>          
-					 </div>
-				   </div>
-			       
-			       <div class="panel-body">
-			      	  <label>Category</label><br/>
-			         <input type="text" class="form-control" ng-model="newReqCategory" placeholder="Enter the requirement category..." /><br />
-			         <label>Value</label><br/>
-			         <input type="text" class="form-control" ng-model="newReqValue" placeholder="Enter the requirement value..." /><br />
-			       	 <button class="btn btn-primary" title="Add" ng-click="addRequirement(newReqCategory, newReqValue)">
-					 	Add requirement
-					 </button>
-			       </div>  
-			</div>
-			<div align="center" class="col-sm-12" align="right">
+			<div class="form-group">
+	      		<label>Qual a sua meta?</label><br/>
+	        	<input type="text" class="form-control" ng-model="newGoalName" placeholder="Enter the goal name..." /><br />
+	         
+	         	<label>Categoria</label><br/>
+	         	<input type="text" class="form-control" ng-model="newGoalCategory" placeholder="Enter the goal category..." /><br /> 
+	        </div>
+	        
+	        
+	        <a href="#">+ Adicionar pré-requisitos para esta meta</a>	        
+	        <div class="alert alert-warning" role="alert" ng-hide="requirements &amp;&amp; requirements.length > 0">
+		      Não existem pré-requisitos cadastrados para esta meta
+		    </div>
+	        
+	        <div class="form-group" ng-repeat="req in requirements">
+				<div class="checkbox col-xs-9">
+			   		<p>{{req.category}}</p>
+			   		<p>{{req.value}}</p>
+			   		<button class="pull-right btn btn-danger" type="button" title="Delete"
+	            		ng-click="deleteRequirement(req)">
+	            		<span class="glyphicon glyphicon-trash"></span>
+	            	</button>          
+			 	</div>
+		   	</div>
+		   	
+		    <div class="form-group">
+      	 		<label>Category</label><br/>
+         		<input type="text" class="form-control" ng-model="newReqCategory" placeholder="Enter the requirement category..." /><br />
+         		<label>Value</label><br/>
+         		<input type="text" class="form-control" ng-model="newReqValue" placeholder="Enter the requirement value..." /><br />
+       	 		<button class="btn btn-primary" title="Add" ng-click="addRequirement(newReqCategory, newReqValue)">
+		 			Add requirement
+		 		</button>
+       		</div>  
+			
+			<div align="center" class="col-sm-12">
 				<button class="btn btn-primary" title="Add" ng-click="addGoal(newGoalName, newGoalCategory)">
 				Save goal
 				</button>

@@ -36,7 +36,11 @@
 	        $scope.requirements.push(req);
 	        $scope.newReqCategory = "";
 	        $scope.newReqValue = "";
-	     };
+	    };
+	    
+	    $scope.deleteRequirement = function(req) {
+	    	$scope.requirements.splice($scope.requirements.indexOf(req), 1);
+	    };
     
   };
   
