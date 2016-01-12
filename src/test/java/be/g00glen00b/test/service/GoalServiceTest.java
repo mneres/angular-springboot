@@ -67,7 +67,7 @@ public class GoalServiceTest {
 	}
 
 	
-	public Goal addGoal(Goal goal, List<Requirement> requirements){
+	/*public Goal addGoal(Goal goal, List<Requirement> requirements){
 		//setup and save goal for test 
 		goalService.addGoal(goal, requirements);
 		return goal;
@@ -119,5 +119,5 @@ public class GoalServiceTest {
 		
 		goalTest = goalService.findOneById(goal.getId());
 		assertNull(goalTest);
-	}
+	}*/
 }
