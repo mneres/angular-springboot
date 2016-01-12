@@ -8,19 +8,38 @@
 	    </div>
 	 
 	      <div class="form-group" ng-repeat="goal in goals">
-	        <div class="checkbox col-xs-9">
+	      	<div class="checkbox col-xs-9">
 	          <h2>
 	            {{goal.name}}
 	          </h2>
 	          <p>{{goal.category}}</p>     
-	          <b>Requirements</b>
-	          <div ng-repeat="req in goal.requirements">
-	          	<p>{{req.category}} - {{req.value}}</p> 
-	          </div>     
-	          <div ng-repeat="act in goal.actions">
-	          	<p>{{act.action}} - {{act.finished}} - {{act.planningDate}}- {{act.createdAt}}</p> 
-	          </div>     
+	          	
+	        <div class="row">
+		        <!-- Requirements --> 
+		        <h4>Requisitos para esta meta</h4>  
+		        <div class="form-group" ng-repeat="req in goal.requirements">
+					<div class="checkbox col-xs-9">
+				   		<b>Categoria:</b>&nbsp;<i>{{req.category}}</i>
+				   		<br/>
+				   		<b>Requisito:</b>&nbsp;<i>{{req.value}}</i>     
+				   		<hr/>
+				 	</div>
+			   	</div>     
 	        </div>
+
+	        <div class="row">
+		        <!-- Actions --> 
+		        <h4>Ações para esta meta</h4>
+		        <div class="form-group" ng-repeat="act in goal.actions">
+					<div class="checkbox col-xs-9">
+				   		<b>Ação:</b>&nbsp;<i>{{act.action}}</i><br/>
+				   		<b>Recurso:</b>&nbsp;<i>{{act.resource}}</i><br/>
+				   		<b>Data planejada:</b>&nbsp;<i>{{act.planningDate}}</i>
+				   		<hr/>
+				 	</div>
+			   	</div>
+	        </div>
+	     </div>   
 	        <div class="col-xs-3">
 	          <button class="pull-right btn btn-danger" type="button" title="Delete"
 	            ng-click="deleteGoal(goal)">
@@ -28,6 +47,6 @@
 	          </button>
 	          <p>Created at: {{goal.createdAt}}<p>
 	        </div>
-	      </div>  
+        </div>
 	</div>
 </div>

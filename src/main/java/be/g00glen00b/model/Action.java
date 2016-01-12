@@ -22,10 +22,11 @@ public class Action {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "planning_date")
 	private Date planningDate;
+	private String resource;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "created_at")
 	private Date createdAt;
-	
+
 	@PrePersist
 	void createdAt() {
 	    this.createdAt = new Date();
@@ -55,6 +56,12 @@ public class Action {
 	}
 	public void setPlanningDate(Date planningDate) {
 		this.planningDate = planningDate;
+	}
+	public String getResource() {
+		return resource;
+	}
+	public void setResource(String resource) {
+		this.resource = resource;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

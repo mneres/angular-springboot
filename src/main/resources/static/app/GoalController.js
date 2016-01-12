@@ -2,7 +2,6 @@
 	var GoalController = function($scope, $http, GoalFactory) {
 		GoalFactory.query(function(response) {
 			$scope.requirements = [];
-			//$scope.actions = [{'action':'Testing actions', 'planningDate':'2016-01-06'}];
 			$scope.actions = [];
 			$scope.goals = response ? response : [];
 		});
@@ -58,13 +57,15 @@
 	    	$("#openReqForm").fadeIn();
 	    }
 	    
-	    $scope.addAction = function(action, planningDate) {
+	    $scope.addAction = function(action, resource, planningDate) {
 	        var act = {
 	        		 "action": action,
+	        		 "resource": resource,
 	                 "planningDate": planningDate
 	        };
 	        $scope.actions.push(act);
 	        $scope.newActAction = "";
+	        $scope.newActResource = "";
 	        $scope.newActDate = "";
 	    };
 	    

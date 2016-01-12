@@ -4,16 +4,16 @@
 	   		<!-- Goal -->  
 			<div class="form-group">
 	      		<label>Qual a sua meta?</label><br/>
-	        	<input type="text" class="form-control" ng-model="newGoalName" placeholder="Enter the goal name..." /><br />
+	        	<input type="text" class="form-control" ng-model="newGoalName" placeholder="Digite sua meta..." /><br />
 	         
-	         	<label>Categoria</label><br/>
-	         	<input type="text" class="form-control" ng-model="newGoalCategory" placeholder="Enter the goal category..." /><br /> 
+	         	<label>Em qual categoria se enquadra?</label><br/>
+	         	<input type="text" class="form-control" ng-model="newGoalCategory" placeholder="Digite a categoria..." /><br /> 
 	        </div>
 	        
 	        <!-- Requirements --> 
 	        <h4>Requisitos para esta meta</h4>
 	        
-		   	<div id="openReqForm">
+		   <div id="openReqForm">
 		        <a href="" ng-click="showRequirementForm()">+ Adicionar novo requisito</a>	        
 		        <div class="alert alert-warning" role="alert" ng-hide="requirements &amp;&amp; requirements.length > 0">
 			      Não existem requisitos cadastrados para esta meta
@@ -21,14 +21,14 @@
 		    </div>
 		    <div class="form-group"  id="reqForm" style="display:none">
 		    	<a href="" ng-click="hideRequirementForm()">- Ocultar formulário de requisitos</a></br>
-      	 		<label>Category</label><br/>
-         		<input type="text" class="form-control" ng-model="newReqCategory" placeholder="Enter the requirement category..." /><br />
-         		<label>Value</label><br/>
-         		<input type="text" class="form-control" ng-model="newReqValue" placeholder="Enter the requirement value..." /><br />
+      	 		<label>Qual o requisito ou recurso para sua meta?</label>&nbsp;<i>Ex.: Dinheiro</i><br/>
+         		<input type="text" class="form-control" ng-model="newReqCategory" placeholder="Digite o requisito ou recurso para sua meta..." /><br />
+         		<label>Qual o valor ou qualificação necessária?</label>&nbsp;<i>Ex.: 3000 Reais</i><br/>
+         		<input type="text" class="form-control" ng-model="newReqValue" placeholder="Digite o valor do seu requisito..." /><br />
        	 		<button class="btn btn-primary" title="Add" ng-click="addRequirement(newReqCategory, newReqValue)">
-		 			Add requirement
+		 			Adicionar Requisito
 		 		</button>
-       		</div>  
+       		</div> 
        		
        		<br/>
        		<div class="form-group" ng-repeat="req in requirements">
@@ -39,12 +39,12 @@
 	            	</button>
        			</div>
 				<div class="checkbox col-xs-9">
-			   		<b>Categoria</b><p>{{req.category}}</p>
-			   		<b>Requisito</b><p>{{req.value}}</p>     
+			   		<b>Categoria:</b>&nbsp;<i>{{req.category}}</i>
+			   		<br/>
+			   		<b>Requisito:</b>&nbsp;<i>{{req.value}}</i>     
 			   		<hr/>
 			 	</div>
 		   	</div>
-       		
        		<!-- Actions -->
        		<h4>Ações para esta meta</h4>
 
@@ -57,11 +57,16 @@
 
 		    <div class="form-group" id="actForm" style="display:none">
       	 		<a href="" ng-click="hideActionForm()">- Ocultar formulário de ações</a></br>
-      	 		<label>Ação</label><br/>
-         		<input type="text" class="form-control" ng-model="newActAction" placeholder="Enter the action..." /><br />
-         		<label>Value</label><br/>
-         		<input type="date" class="form-control" ng-model="newActDate" placeholder="Enter the planned date..." /><br />
-       	 		<button class="btn btn-primary" title="Add" ng-click="addAction(newActAction, newActDate)">
+      	 		<label>Qual é a ação para sua meta?</label><br/>
+         		<input type="text" class="form-control" ng-model="newActAction" placeholder="Digite a ação..." /><br />
+         		
+         		<label>Existe algum recurso necessário para esta ação?</label><br/>
+         		<input type="text" class="form-control" ng-model="newActResource" placeholder="Digite o recurso necessário para esta ação..."/><br />
+         		
+         		<label>Qual a data prevista para a realização da ação?</label><br/>
+         		<input type="date" class="form-control" ng-model="newActDate" /><br />
+       	 		
+       	 		<button class="btn btn-primary" title="Add" ng-click="addAction(newActAction, newActResource, newActDate)">
 		 			Adicionar ação
 		 		</button>
        		</div>
@@ -75,15 +80,16 @@
 	            	</button>  
        			</div>
 				<div class="checkbox col-xs-9">
-			   		<b>Ação</b><p>{{act.action}}</p>
-			   		<b>Data planejada</b><p>{{act.planningDate}}</p>
+			   		<b>Ação:</b>&nbsp;<i>{{act.action}}</i><br/>
+			   		<b>Recurso:</b>&nbsp;<i>{{act.action}}</i><br/>
+			   		<b>Data planejada:</b>&nbsp;<i>{{act.planningDate}}</i>
 			   		<hr/>
 			 	</div>
 		   	</div>
 			
 			<div align="center" class="col-sm-12">
 				<button class="btn btn-primary" title="Add" ng-click="addGoal(newGoalName, newGoalCategory)">
-				Save goal
+				Salvar objetivo
 				</button>
 			</div>
 		</form>
