@@ -2,7 +2,8 @@
 	var GoalController = function($scope, $http, GoalFactory) {
 		GoalFactory.query(function(response) {
 			$scope.requirements = [];
-			$scope.actions = [{'action':'Testing actions', 'planningDate': '02/02/2016'}];
+			//$scope.actions = [{'action':'Testing actions', 'planningDate':'2016-01-06'}];
+			$scope.actions = [];
 			$scope.goals = response ? response : [];
 		});
     
@@ -46,6 +47,40 @@
 	    $scope.deleteRequirement = function(req) {
 	    	$scope.requirements.splice($scope.requirements.indexOf(req), 1);
 	    };
+	    
+	    $scope.showRequirementForm = function(){
+	    	$("#openReqForm").fadeOut();
+	    	$("#reqForm").fadeIn();
+	    }
+	    
+	    $scope.hideRequirementForm = function(){
+	    	$("#reqForm").fadeOut();
+	    	$("#openReqForm").fadeIn();
+	    }
+	    
+	    $scope.addAction = function(action, planningDate) {
+	        var act = {
+	        		 "action": action,
+	                 "planningDate": planningDate
+	        };
+	        $scope.actions.push(act);
+	        $scope.newActAction = "";
+	        $scope.newActDate = "";
+	    };
+	    
+	    $scope.deleteAction = function(act) {
+	    	$scope.actions.splice($scope.actions.indexOf(act), 1);
+	    };
+	    
+	    $scope.showActionForm = function(){
+	    	$("#openActForm").fadeOut();
+	    	$("#actForm").fadeIn();
+	    }
+	    
+	    $scope.hideActionForm = function(){
+	    	$("#actForm").fadeOut();
+	    	$("#openActForm").fadeIn();
+	    }
     
   };
   

@@ -17,6 +17,9 @@
 	          <div ng-repeat="req in goal.requirements">
 	          	<p>{{req.category}} - {{req.value}}</p> 
 	          </div>     
+	          <div ng-repeat="act in goal.actions">
+	          	<p>{{act.action}} - {{act.finished}} - {{act.planningDate}}- {{act.createdAt}}</p> 
+	          </div>     
 	        </div>
 	        <div class="col-xs-3">
 	          <button class="pull-right btn btn-danger" type="button" title="Delete"
