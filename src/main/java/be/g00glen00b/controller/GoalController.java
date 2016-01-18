@@ -50,6 +50,11 @@ public class GoalController extends BaseController{
 		goalService.addGoal(goal, requirements, actions);
 		return goal;
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public Goal getGoal(@PathVariable Integer id) {
+		return goalService.findOneById(id);
+	}
   
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public Goal updateGoal(@RequestBody Goal updatedGoal, @PathVariable Integer id) {

@@ -1,52 +1,26 @@
 <div id="page-context" class="row">
 	<div class="container" id="dashboard">
-	    <div class="page-header">
-	      <h1>My goals</h1>
+	    <div class="page-header" align="center">
+	      <h2>Meus objetivos</h2>
 	    </div>
 	    <div class="alert alert-info" role="alert" ng-hide="goals &amp;&amp; goals.length > 0">
 	      There are no goals yet.
 	    </div>
-	 
-	      <div class="form-group" ng-repeat="goal in goals">
+   		<div class="form-group" ng-repeat="goal in goals">
 	      	<div class="checkbox col-xs-9">
-	          <h2>
-	            {{goal.name}}
-	          </h2>
-	          <p>{{goal.category}}</p>     
-	          	
-	        <div class="row">
-		        <!-- Requirements --> 
-		        <h4>Requisitos para esta meta</h4>  
-		        <div class="form-group" ng-repeat="req in goal.requirements">
-					<div class="checkbox col-xs-9">
-				   		<b>Categoria:</b>&nbsp;<i>{{req.category}}</i>
-				   		<br/>
-				   		<b>Requisito:</b>&nbsp;<i>{{req.value}}</i>     
-				   		<hr/>
-				 	</div>
-			   	</div>     
-	        </div>
-
-	        <div class="row">
-		        <!-- Actions --> 
-		        <h4>Ações para esta meta</h4>
-		        <div class="form-group" ng-repeat="act in goal.actions">
-					<div class="checkbox col-xs-9">
-				   		<b>Ação:</b>&nbsp;<i>{{act.action}}</i><br/>
-				   		<b>Recurso:</b>&nbsp;<i>{{act.resource}}</i><br/>
-				   		<b>Data planejada:</b>&nbsp;<i>{{act.planningDate}}</i>
-				   		<hr/>
-				 	</div>
-			   	</div>
-	        </div>
-	     </div>   
+	          <h3><a href="/getGoal/{{goal.id}}">{{goal.name}}</a></h3>
+	          <b>Categoria:</b>&nbsp;<i>{{goal.category}}</i><br/>   
+	          <b>Status:</b>&nbsp;<i>Em execução</i>  
+	     	</div>  
+     	 
 	        <div class="col-xs-3">
 	          <button class="pull-right btn btn-danger" type="button" title="Delete"
 	            ng-click="deleteGoal(goal)">
 	            <span class="glyphicon glyphicon-trash"></span>
 	          </button>
-	          <p>Created at: {{goal.createdAt}}<p>
+	          <p>Criado em: {{goal.createdAt}}<p>
 	        </div>
-        </div>
+	        <br/>
+       	</div>
 	</div>
 </div>

@@ -17,6 +17,9 @@
 		}).when('/myGoals', {
 			templateUrl : 'listGoals.html',
 			controller : 'GoalController'
+		}).when('/getGoal/:goalID', {
+			templateUrl : '/getGoal.html',
+			controller : 'GoalController'
 		}).when('/newUser', {
 			templateUrl : 'addUser.html',
 			controller : 'UserController'

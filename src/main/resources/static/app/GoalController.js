@@ -1,10 +1,14 @@
 (function(angular) {	
-	var GoalController = function($scope, $http, GoalFactory) {
+	var GoalController = function($scope, $http, $routeParams, GoalFactory) {
 		GoalFactory.query(function(response) {
 			$scope.requirements = [];
 			$scope.actions = [];
 			$scope.goals = response ? response : [];
 		});
+
+		if($routeParams.goalID){
+			$scope.selectedGoal = GoalFactory.get({id: $routeParams.goalID});
+		}	
     
 	    $scope.addGoal = function(name, category) {
 	    	$http.post('/api/goals/addRequirements', $scope.requirements)
@@ -81,10 +85,9 @@
 	    $scope.hideActionForm = function(){
 	    	$("#actForm").fadeOut();
 	    	$("#openActForm").fadeIn();
-	    }
-    
+	    }   
   };
   
-  GoalController.$inject = ['$scope', '$http', 'GoalFactory'];
+  GoalController.$inject = ['$scope', '$http', '$routeParams', 'GoalFactory'];
   angular.module("myApp.controllers").controller("GoalController", GoalController);
 }(angular));

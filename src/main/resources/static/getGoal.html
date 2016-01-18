@@ -1,0 +1,41 @@
+<div id="page-context" class="row">
+	<div class="container" id="dashboard"> 
+	      <div class="form-group">
+	      	<div class="checkbox col-xs-9">
+	          <h2>
+	            {{selectedGoal.name}}
+	          </h2>
+	          <p>{{selectedGoal.category}}</p>     
+	          	
+	        <div class="row">
+		        <!-- Requirements --> 
+		        <h4>Requisitos para esta meta</h4>  
+		        <div class="form-group" ng-repeat="req in selectedGoal.requirements">
+					<div class="checkbox col-xs-9">
+				   		<b>Categoria:</b>&nbsp;<i>{{req.category}}</i>
+				   		<br/>
+				   		<b>Requisito:</b>&nbsp;<i>{{req.value}}</i>     
+				   		<hr/>
+				 	</div>
+			   	</div>     
+	        </div>
+
+	        <div class="row">
+		        <!-- Actions --> 
+		        <h4>Ações para esta meta</h4>
+		        <div class="form-group" ng-repeat="act in selectedGoal.actions">
+					<div class="checkbox col-xs-9">
+				   		<b>Ação:</b>&nbsp;<i>{{act.action}}</i><br/>
+				   		<b>Recurso:</b>&nbsp;<i>{{act.resource}}</i><br/>
+				   		<b>Data planejada:</b>&nbsp;<i>{{act.planningDate}}</i>
+				   		<hr/>
+				 	</div>
+			   	</div>
+	        </div>
+	     </div>   
+	        <div class="col-xs-3">
+	          <p>Created at: {{selectedGoal.createdAt}}<p>
+	        </div>
+        </div>
+	</div>
+</div>
