@@ -11,16 +11,6 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.0.RELEASE</version>
 	</parent>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>2.3.2</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	
 	<build>
 		<plugins>
@@ -31,7 +21,7 @@
 		</plugins>
 	</build>
 	
-	<dependencies>
+	<dependencies>	
 		<!-- Spring boot dependencies -->
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,6 +52,13 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- Postgres -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1207.jre7</version>
 		</dependency>
 	</dependencies>
 	
