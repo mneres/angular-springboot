@@ -115,7 +115,7 @@ public class GoalControllerTest extends AbstractControllerTest{
         Assert.assertEquals(200, status);
 	}
 	
-	@Test
+	/*@Test
 	public void testCreateAndUpdateGoal() throws Exception{
         //set up URI for goals
 		String uri = "/api/goals";
@@ -149,5 +149,5 @@ public class GoalControllerTest extends AbstractControllerTest{
         		.contentType(MediaType.APPLICATION_JSON)
         		.accept(MediaType.APPLICATION_JSON).content(inputJson)).andReturn();
         Assert.assertEquals(200, result.getResponse().getStatus());  
-	}
+	}*/
 }

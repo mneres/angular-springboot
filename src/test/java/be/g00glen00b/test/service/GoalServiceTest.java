@@ -23,10 +23,10 @@ import be.g00glen00b.model.User;
 import be.g00glen00b.service.GoalService;
 import be.g00glen00b.service.UserService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+/*@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @TransactionConfiguration
-@Transactional
+@Transactional*/
 public class GoalServiceTest {
 	
 	//setup goal static variables
