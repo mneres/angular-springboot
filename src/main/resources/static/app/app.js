@@ -20,6 +20,9 @@
 		}).when('/getGoal/:goalID', {
 			templateUrl : '/getGoal.html',
 			controller : 'GoalController'
+		}).when('/editGoal/:editGoalID', {
+			templateUrl : '/editGoal.html',
+			controller : 'GoalController'
 		}).when('/newUser', {
 			templateUrl : 'addUser.html',
 			controller : 'UserController'

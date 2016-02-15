@@ -1,0 +1,20 @@
+<div id="page-context" class="row">
+	<div class="container" id="dashboard">
+	   <form class="form-horizontal" role="form"> 
+	   		<!-- Goal -->  
+			<div class="form-group">
+	      		<label>Qual a sua meta?</label><br/>
+	        	<input type="text" value="" class="form-control" ng-model="editGoalName" placeholder="Digite sua meta..." /><br />
+	         
+	         	<label>Em qual categoria se enquadra?</label><br/>
+	         	<input type="text" class="form-control" ng-model="editGoalCategory" placeholder="Digite a categoria..." /><br /> 
+	        </div>
+	        			
+			<div align="center" class="col-sm-12">
+				<button class="btn btn-primary" title="Add" ng-click="updateGoal(selectedEditGoal, editGoalName, editGoalCategory)">
+				Salvar objetivo
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

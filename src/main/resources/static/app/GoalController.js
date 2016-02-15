@@ -6,10 +6,24 @@
 			$scope.goals = response ? response : [];
 		});
 
+		/*
+		 * Conditional to verify which parameter was activated
+		 */
 		if($routeParams.goalID){
+			//Selection of the goal
 			$scope.selectedGoal = GoalFactory.get({id: $routeParams.goalID});
-		}	
-    
+		}else if($routeParams.editGoalID){
+			//Enable editing of the goal
+			GoalFactory.get({id: $routeParams.editGoalID}, function(editGoal){
+				$scope.selectedEditGoal = editGoal;
+				$scope.editGoalName = editGoal.name;
+				$scope.editGoalCategory = editGoal.category;
+			});
+		}else{
+			$scope.selectedGoal = {};
+			$scope.selectedEditGoal = {};
+		}
+
 	    $scope.addGoal = function(name, category) {
 	    	$http.post('/api/goals/addRequirements', $scope.requirements)
 	    		.success(function(data){
@@ -27,7 +41,9 @@
 	    	});
 	    };
 	    
-	    $scope.updateGoal = function(goal) {
+	    $scope.updateGoal = function(goal, name, category) {
+	    	goal.name = name;
+	    	goal.category = category;
 	    	goal.$update();
 	    };
 	    

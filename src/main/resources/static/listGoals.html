@@ -18,6 +18,11 @@
 	            ng-click="deleteGoal(goal)">
 	            <span class="glyphicon glyphicon-trash"></span>
 	          </button>
+	          <a href="/editGoal/{{goal.id}}">
+		          <button class="pull-right btn btn-primary" type="button" title="Edit">            
+		            	<span class="glyphicon glyphicon-pencil"></span>
+		          </button>
+	          </a>
 	          <p>Criado em: {{goal.createdAt}}<p>
 	        </div>
 	        <br/>
