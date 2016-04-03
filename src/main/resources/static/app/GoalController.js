@@ -16,8 +16,11 @@
 			//Enable editing of the goal
 			GoalFactory.get({id: $routeParams.editGoalID}, function(editGoal){
 				$scope.selectedEditGoal = editGoal;
+				
 				$scope.editGoalName = editGoal.name;
 				$scope.editGoalCategory = editGoal.category;
+				
+				$scope.requirements = editGoal.requirements;
 			});
 		}else{
 			$scope.selectedGoal = {};
@@ -41,10 +44,22 @@
 	    	});
 	    };
 	    
-	    $scope.updateGoal = function(goal, name, category) {
-	    	goal.name = name;
-	    	goal.category = category;
-	    	goal.$update();
+	    $scope.updateGoal = function(goal, name, category) {	
+	    	$http.post('/api/goals/addRequirements', $scope.requirements)
+    		.success(function(data){
+    			$http.post('/api/goals/addActions', $scope.actions)
+    			.success(function(data){
+    				$scope.requirements = [];
+    				$scope.actions = [];
+    				
+    		    	goal.name = name;
+    		    	goal.category = category;
+    		    	goal.$update();
+    		    	
+	    		    $scope.editGoalName = "";
+	    		    $scope.editGoalCategory = "";
+    			});
+    		});
 	    };
 	    
 	    $scope.deleteGoal = function(goal) {

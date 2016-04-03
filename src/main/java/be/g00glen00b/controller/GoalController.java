@@ -59,7 +59,7 @@ public class GoalController extends BaseController{
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public Goal updateGoal(@RequestBody Goal updatedGoal, @PathVariable Integer id) {
 		updatedGoal.setId(id);
-		return goalService.updateGoal(updatedGoal);
+		return goalService.updateGoal(updatedGoal, requirements, actions);
 	}
   
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

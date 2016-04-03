@@ -9,7 +9,7 @@ import be.g00glen00b.model.Requirement;
 public interface GoalService {
 	Goal addGoal(Goal goal, List<Requirement> requirements, List<Action> actions);
 	
-	Goal updateGoal(Goal goal);
+	Goal updateGoal(Goal goal, List<Requirement> requirements, List<Action> actions);
 	
 	void deleteGoal(Integer id);
 	
@@ -17,5 +17,5 @@ public interface GoalService {
 	
 	Goal findOneById(Integer id);
 	
-	Requirement addRequirementInGoal(Requirement requirement, Goal goal);
+	Goal addRequirementInGoal(Requirement requirement, Goal goal);
 }
