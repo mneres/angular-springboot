@@ -57,7 +57,7 @@ public class GoalServiceImpl implements GoalService{
 	@Override
 	@Transactional
 	public Goal updateGoal(Goal goal, List<Requirement> requirements, List<Action> actions) {	
-		/*try{
+		try{
 			for(Requirement req : requirements){
 				if(req.getId() == null){
 					requirementRepository.save(req);
@@ -70,23 +70,7 @@ public class GoalServiceImpl implements GoalService{
 		}catch(Exception e){
 			goal = new Goal();
 		}
-		return goal;*/
-		
-		for(Requirement req : requirements){
-			if(req.getId() == null){
-				requirementRepository.save(req);
-				if(req.getId() != null){
-					goal.addRequirement(req);
-				}else{
-					req = new Requirement();
-				}
-			}else{
-				
-			}
-		}
-		goalRepository.save(goal);
-		return goal;
-		
+		return goal;	
 	}
 
 	@Override
@@ -123,7 +107,7 @@ public class GoalServiceImpl implements GoalService{
 	
 	@Override
 	@Transactional
-	public Goal addRequirementInGoal(Requirement requirement, Goal goal){
+	public Requirement addRequirementInGoal(Requirement requirement, Goal goal){
 		if(goal.getId() != null){
 			requirementRepository.save(requirement);
 			if(requirement.getId() != null){
@@ -135,6 +119,6 @@ public class GoalServiceImpl implements GoalService{
 		}else{
 			requirement = new Requirement();
 		}
-		return goal;
+		return requirement;
 	}
 }

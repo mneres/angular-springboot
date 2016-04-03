@@ -17,5 +17,5 @@ public interface GoalService {
 	
 	Goal findOneById(Integer id);
 	
-	Goal addRequirementInGoal(Requirement requirement, Goal goal);
+	Requirement addRequirementInGoal(Requirement requirement, Goal goal);
 }
